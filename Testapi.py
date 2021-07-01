@@ -33,8 +33,9 @@ def Definite_time_run(url):
     while True:
         Getdata(url)
         time.sleep(30)#間隔30秒執行一次get
-def Fixed_time_run(url,Start_time):
+def Fixed_time_run(url):
     status = False
+    Start_time=input('請輸入啟動時間:')
     while status != True:
         localtime = time.localtime()  # 讀取電腦時間
         result = time.strftime("%I:%M:%S", localtime)  # 時間顯示方式
@@ -42,6 +43,8 @@ def Fixed_time_run(url,Start_time):
             status = True
             Getdata(url)
             break
-Start_time=input('請輸入啟動時間:')
+
 url = "http://127.0.0.1:8000/api/musics/"
 
+if __name__=="__main__":
+    Definite_time_run(url)
