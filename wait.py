@@ -24,7 +24,7 @@ def driverquit():
     driver.quit()
     driver1.quit()
     driver2.quit()
-def run():
+def Work():
     time_start=time.time()
     cdaup.check_update_chromedriver()
     ThreadA=[]
@@ -51,6 +51,15 @@ def run():
     time_end=time.time()
     time_c=time_end-time_start
     print("執行時間：%f 秒" % (time_c))
+def run():
+    while True:
+        Work()
+        for i in range(600):
+            localtime = time.localtime()
+            result = time.strftime("%I:%M:%S ", localtime)
+            time.sleep(1)
+        
+
 
 if __name__ == '__main__':
     run()
