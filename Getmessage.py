@@ -22,23 +22,6 @@ def Getdata(url):
                         f=file.write(str(Allvalues[namber])+'\n')
     except:
         pass
-def Postchack(i,url):
-    try:
-        datas={
-            "song": "song"+str(i),
-            "singer": "singer"+str(i)
-        }
-        headers={'Content-Type':'application/json'}
-        updata=requests.post(url=url,headers=headers,data=json.dumps(datas))
-        data = requests.get(url=url).text
-        DataNo = json.loads(data)
-        if DataNo['song'] == "song"+str(i):
-            if DataNo['singer'] == "singer"+str(i):
-                print('更新資料正常')
-        else:
-            print('更新資料異常,請確認資料格式是否有誤,或者資料庫是否正常運行')
-    except:
-        pass
 url="http://127.0.0.1:8000/api/musics/"
 if __name__ == '__main__':
     time_start=time.time()
