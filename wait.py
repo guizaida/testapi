@@ -54,10 +54,7 @@ def Work():
 def run():
     while True:
         Work()
-        for i in range(600):
-            localtime = time.localtime()
-            result = time.strftime("%I:%M:%S ", localtime)
-            time.sleep(1)
+        time.sleep(600)
         
 
 
