@@ -23,7 +23,7 @@ def Getdata(url):
                             f=file.write(str(Allkey[namber])+':')
                             f=file.write(str(Allvalues[namber])+'\n')
         else:
-            print('連線失敗','錯誤代碼為:'data.status_code)
+            print('連線失敗','錯誤代碼為:',data.status_code)
     except:
         pass
 def run(url):
