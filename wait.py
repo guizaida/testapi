@@ -4,18 +4,17 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.by import By
 import time
 from threading import Thread
+import ChromeDriverAutoUpdata as cdaup
 def seleniumpage(url):
     globals()['driver'] = webdriver.Chrome("./chromedriver.exe")
     driver.get(url)
     locator=(By.XPATH,'//*[@id="banner-blm"]/h3/a[2]')
     WebDriverWait(driver,10,1).until(EC.presence_of_element_located(locator))
-    # driver.quit()
 def pythonpage(url):
     globals()['driver1'] = webdriver.Chrome("./chromedriver.exe")
     driver1.get(url)
     locator=(By.XPATH,'//*[@id="dive-into-python"]/ol/li[1]/a')
     WebDriverWait(driver1,10,1).until(EC.presence_of_element_located(locator))
-    # driver1.quit()
 def pypipage(url):
     globals()['driver2'] = webdriver.Chrome("./chromedriver.exe")
     driver2.get(url)
@@ -27,6 +26,7 @@ def driverquit():
     driver2.quit()
 def run():
     time_start=time.time()
+    cdaup.check_update_chromedriver()
     ThreadA=[]
     ThreadB=[]
     ThreadC=[]
@@ -44,12 +44,13 @@ def run():
         ThreadC[i].join()
     for i in range(10):
         localtime = time.localtime()
-        result = time.strftime("%I:%M:%S %p", localtime)
+        result = time.strftime("%I:%M:%S ", localtime)
         print(result)
         time.sleep(1)
+    driverquit()
     time_end=time.time()
     time_c=time_end-time_start
     print("執行時間：%f 秒" % (time_c))
-    driverquit()
+
 if __name__ == '__main__':
     run()
